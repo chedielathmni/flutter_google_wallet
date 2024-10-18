@@ -15,7 +15,6 @@ PlatformException _createConnectionError(String channelName) {
   );
 }
 
-
 class _PigeonCodec extends StandardMessageCodec {
   const _PigeonCodec();
   @override
@@ -41,9 +40,11 @@ class GoogleWalletApi {
   /// Constructor for [GoogleWalletApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  GoogleWalletApi({BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
+  GoogleWalletApi(
+      {BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
       : pigeonVar_binaryMessenger = binaryMessenger,
-        pigeonVar_messageChannelSuffix = messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
+        pigeonVar_messageChannelSuffix =
+            messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
   final BinaryMessenger? pigeonVar_binaryMessenger;
 
   static const MessageCodec<Object?> pigeonChannelCodec = _PigeonCodec();
@@ -51,8 +52,10 @@ class GoogleWalletApi {
   final String pigeonVar_messageChannelSuffix;
 
   Future<void> initWalletClient() async {
-    final String pigeonVar_channelName = 'dev.flutter.pigeon.flutter_google_wallet.GoogleWalletApi.initWalletClient$pigeonVar_messageChannelSuffix';
-    final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
+    final String pigeonVar_channelName =
+        'dev.flutter.pigeon.flutter_google_wallet.GoogleWalletApi.initWalletClient$pigeonVar_messageChannelSuffix';
+    final BasicMessageChannel<Object?> pigeonVar_channel =
+        BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,
@@ -73,8 +76,10 @@ class GoogleWalletApi {
   }
 
   Future<bool> getWalletApiAvailabilityStatus() async {
-    final String pigeonVar_channelName = 'dev.flutter.pigeon.flutter_google_wallet.GoogleWalletApi.getWalletApiAvailabilityStatus$pigeonVar_messageChannelSuffix';
-    final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
+    final String pigeonVar_channelName =
+        'dev.flutter.pigeon.flutter_google_wallet.GoogleWalletApi.getWalletApiAvailabilityStatus$pigeonVar_messageChannelSuffix';
+    final BasicMessageChannel<Object?> pigeonVar_channel =
+        BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,
@@ -99,15 +104,19 @@ class GoogleWalletApi {
     }
   }
 
-  Future<void> savePasses(String jsonPass, int addToGoogleWalletRequestCode) async {
-    final String pigeonVar_channelName = 'dev.flutter.pigeon.flutter_google_wallet.GoogleWalletApi.savePasses$pigeonVar_messageChannelSuffix';
-    final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
+  Future<void> savePasses(
+      String jsonPass, int addToGoogleWalletRequestCode) async {
+    final String pigeonVar_channelName =
+        'dev.flutter.pigeon.flutter_google_wallet.GoogleWalletApi.savePasses$pigeonVar_messageChannelSuffix';
+    final BasicMessageChannel<Object?> pigeonVar_channel =
+        BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,
     );
-    final List<Object?>? pigeonVar_replyList =
-        await pigeonVar_channel.send(<Object?>[jsonPass, addToGoogleWalletRequestCode]) as List<Object?>?;
+    final List<Object?>? pigeonVar_replyList = await pigeonVar_channel
+            .send(<Object?>[jsonPass, addToGoogleWalletRequestCode])
+        as List<Object?>?;
     if (pigeonVar_replyList == null) {
       throw _createConnectionError(pigeonVar_channelName);
     } else if (pigeonVar_replyList.length > 1) {
@@ -121,15 +130,19 @@ class GoogleWalletApi {
     }
   }
 
-  Future<void> savePassesJwt(String jsonPass, int addToGoogleWalletRequestCode) async {
-    final String pigeonVar_channelName = 'dev.flutter.pigeon.flutter_google_wallet.GoogleWalletApi.savePassesJwt$pigeonVar_messageChannelSuffix';
-    final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
+  Future<void> savePassesJwt(
+      String jsonPass, int addToGoogleWalletRequestCode) async {
+    final String pigeonVar_channelName =
+        'dev.flutter.pigeon.flutter_google_wallet.GoogleWalletApi.savePassesJwt$pigeonVar_messageChannelSuffix';
+    final BasicMessageChannel<Object?> pigeonVar_channel =
+        BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,
     );
-    final List<Object?>? pigeonVar_replyList =
-        await pigeonVar_channel.send(<Object?>[jsonPass, addToGoogleWalletRequestCode]) as List<Object?>?;
+    final List<Object?>? pigeonVar_replyList = await pigeonVar_channel
+            .send(<Object?>[jsonPass, addToGoogleWalletRequestCode])
+        as List<Object?>?;
     if (pigeonVar_replyList == null) {
       throw _createConnectionError(pigeonVar_channelName);
     } else if (pigeonVar_replyList.length > 1) {
